@@ -1,0 +1,31 @@
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:latest-ffmpeg
+    container_name: mediamtx
+    ports:
+      - "8554:8554"  # RTSP port
+      - "8888:8888"  # WebRTC port
+      - "8889:8889"  # HLS port
+    restart: unless-stopped
+    networks:
+      - rtsp-network
+
+  rtsp-load-tester:
+    build: .
+    container_name: rtsp-load-tester
+    volumes:
+      - ./videos:/app/videos  # Mount your video files here
+      - ./logs:/app/logs
+      # Optional: override config by mounting custom config file
+      # - ./config/config.yaml:/app/config/config.yaml
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=INFO
+    depends_on:
+      - mediamtx
+    networks:
+      - rtsp-network
+
+networks:
+  rtsp-network:
+    driver: bridge

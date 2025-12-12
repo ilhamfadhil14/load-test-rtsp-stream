@@ -1,0 +1,25 @@
+[project]
+name = "rtsp-load-tester"
+version = "0.1.0"
+description = "RTSP stream publisher for load testing AI video processing pipelines"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "opencv-python==4.8.1.78",
+    "numpy==1.24.3",
+    "ffmpeg-python==0.2.0",
+    "psutil==5.9.6",
+    "loguru==0.7.2",
+    "pyyaml==6.0.1",
+    "python-dotenv==1.0.0",
+]
+
+[project.scripts]
+rtsp-load-test = "rtsp_load_tester.main:main"
+
+[tool.setuptools]
+packages = ["rtsp_load_tester"]
+package-dir = {"" = "src"}
+
+[tool.uv]
+package = true

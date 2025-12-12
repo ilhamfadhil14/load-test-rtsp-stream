@@ -1,0 +1,40 @@
+# RTSP Load Test Configuration for Docker
+
+# MediaMTX Server Settings (using container hostname)
+rtsp_server:
+  host: "mediamtx"
+  port: 8554
+  base_url: "rtsp://mediamtx:8554"
+
+# Video Source Configuration
+# Specify a single video file to use for all streams
+video:
+  path: "videos/sample.mp4"  # Path to your video file (mounted from host)
+  loop: true
+  fps: 30
+
+# Stream Publishing Settings
+publisher:
+  codec: "libx264"  # Video codec
+  preset: "ultrafast"  # Encoding preset (ultrafast, fast, medium, slow)
+  bitrate: "2M"  # Video bitrate
+  format: "rtsp"
+  pixel_format: "yuv420p"
+
+# Load Test Settings
+load_test:
+  concurrent_streams: 3  # Number of parallel streams
+  duration: 3600  # Test duration in seconds (0 = infinite)
+  report_interval: 10  # Status report interval in seconds
+
+# Monitoring
+monitoring:
+  enabled: true
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  metrics_file: "logs/metrics.json"
+
+# Resource Limits
+limits:
+  max_streams: 50
+  max_memory_percent: 80  # Stop if system memory exceeds this
+  max_cpu_percent: 90  # Warning if CPU exceeds this
