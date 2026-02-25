@@ -44,7 +44,7 @@ def validate_setup():
             stderr=subprocess.PIPE,
             check=True
         )
-        logger.info("✓ FFmpeg is installed")
+        logger.info(f"✓ FFmpeg is installed: {result.stdout.decode().splitlines()[0]}")
     except (subprocess.CalledProcessError, FileNotFoundError):
         logger.error("✗ FFmpeg is not installed or not in PATH")
         logger.error("Please install FFmpeg: https://ffmpeg.org/download.html")
