@@ -66,13 +66,20 @@ def main() -> int:
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
     writer = cv2.VideoWriter(str(output_path), fourcc, fps, (width, height))
 
+    frame_interval = 1.0 / fps
     start_time = time.time()
+    next_frame_time = time.time()
+
     while True:
         ret, frame = cap.read()
         if not ret:
             break
         cv2.imshow("Webcam Preview", frame)
-        writer.write(frame)
+        now = time.time()
+        if now >= next_frame_time:
+            writer.write(frame)
+            next_frame_time += frame_interval
+
         if time.time() - start_time >= args.duration_seconds:
             break
         if cv2.waitKey(1) & 0xFF == ord("q"):
