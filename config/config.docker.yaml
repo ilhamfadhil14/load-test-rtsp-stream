@@ -9,7 +9,7 @@ rtsp_server:
 # Video Source Configuration
 # Specify a single video file to use for all streams
 video:
-  path: "videos/sample.mp4"  # Path to your video file (mounted from host)
+  path: "videos/fr/fr-sample.mp4"  # Path to your video file (mounted from host)
   loop: true
   fps: 30
 
@@ -23,7 +23,7 @@ publisher:
 
 # Load Test Settings
 load_test:
-  concurrent_streams: 3  # Number of parallel streams
+  concurrent_streams: 1  # Number of parallel streams
   duration: 3600  # Test duration in seconds (0 = infinite)
   report_interval: 10  # Status report interval in seconds
 

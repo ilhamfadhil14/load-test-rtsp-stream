@@ -5,7 +5,6 @@ Creates dummy video files for testing
 
 import cv2
 import numpy as np
-import os
 from pathlib import Path
 from loguru import logger
 

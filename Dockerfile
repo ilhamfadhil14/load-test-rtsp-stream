@@ -13,12 +13,11 @@ WORKDIR /app
 # Copy uv project files first for better caching
 COPY pyproject.toml .
 COPY uv.lock ./
+COPY README.md ./
+COPY src/ ./src/
 
 # Install dependencies
 RUN uv sync --frozen
-
-# Copy source code
-COPY src/ ./src/
 
 # Copy config files
 COPY config/config.docker.yaml ./config/config.yaml
