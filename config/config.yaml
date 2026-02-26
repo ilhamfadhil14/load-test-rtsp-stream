@@ -2,9 +2,9 @@
 
 # MediaMTX Server Settings
 rtsp_server:
-  host: "localhost"
+  host: "mediamtx"
   port: 8554
-  base_url: "rtsp://localhost:8554"
+  base_url: "rtsp://mediamtx:8554"
 
 # Video Source Configuration
 # Specify a single video file to use for all streams
