@@ -89,6 +89,8 @@ class RTSPStreamPublisher:
         """Build FFmpeg command for streaming"""
         # Input options
         input_opts = [
+            "-hide_banner",
+            "-loglevel", "error",
             "-re",  # Read input at native frame rate
             "-stream_loop", "-1" if self.loop else "0",  # Loop infinitely or once
             "-i", self.video_path
@@ -102,6 +104,9 @@ class RTSPStreamPublisher:
             "-pix_fmt", self.pixel_format,
             "-r", str(self.fps),
             "-f", "rtsp",
+            "-g", str(self.fps * 2),  
+            "-keyint_min", str(self.fps),
+            "-sc_threshold", "0",
             "-rtsp_transport", "tcp",
         ]
         
