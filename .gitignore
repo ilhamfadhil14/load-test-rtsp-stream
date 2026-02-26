@@ -22,6 +22,7 @@ videos/*.mov
 videos/*.flv
 videos/*.wmv
 !videos/README.md
+*.mp4
 
 # uv
 .uv/
