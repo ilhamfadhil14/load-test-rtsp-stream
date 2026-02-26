@@ -20,7 +20,7 @@ COPY src/ ./src/
 RUN uv sync --frozen
 
 # Copy config files
-COPY config/config.docker.yaml ./config/config.yaml
+COPY config/config.yaml ./config/config.yaml
 
 # Create directories
 RUN mkdir -p logs
